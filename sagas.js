@@ -12,6 +12,16 @@ function* fetchUser(action) {
    }
 }
 
+/*
+  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
+  Allows concurrent fetches of user.
+*/
+function* mySaga() {
+  yield* takeEvery("USER_FETCH_REQUESTED", fetchUser);
+}
+
+export default mySaga;
+
 // export function* helloSaga() {
 //   console.log('Hello Sagas!')
 // }
